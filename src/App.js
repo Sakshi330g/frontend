@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/landing';
+import Authentication from './pages/authentication';
+import VideoMeetComponent from './pages/VideoMeet';
+import HomeComponent from "./pages/home";
+import History from './pages/history';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+    <Routes>
+       <Route path='/' element={<LandingPage />} />
+
+            <Route path='/auth' element={<Authentication />} />
+
+            <Route path='/home's element={<HomeComponent />} />
+            <Route path='/history' element={<History />} />
+            <Route path='/:url' element={<VideoMeetComponent />} />
+      
+    </Routes>
+   
   );
 }
 
