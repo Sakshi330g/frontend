@@ -17,8 +17,7 @@ export const AuthProvider = ({ children }) => {
     const authContext = useContext(AuthContext);
 
 
-    const [userData, setUserData] = useState(null);
-   
+    const [userData, setUserData] = useState(authContext);
 
 
     const router = useNavigate();
@@ -86,12 +85,12 @@ export const AuthProvider = ({ children }) => {
     }
 
 
-   
+    const data = {
+        userData, setUserData, addToUserHistory, getHistoryOfUser, handleRegister, handleLogin
+    }
 
     return (
-        <AuthContext.Provider value={{
-        userData, setUserData, addToUserHistory, getHistoryOfUser, handleRegister, handleLogin
-    }}>
+        <AuthContext.Provider value={data}>
             {children}
         </AuthContext.Provider>
     )
