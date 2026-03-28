@@ -5,12 +5,22 @@ import "../App.css";
 import { Button, IconButton, TextField } from '@mui/material';
 import RestoreIcon from '@mui/icons-material/Restore';
 import { AuthContext } from '../contexts/AuthContext';
+import React, { useContext, useState, useEffect } from 'react'
 
 function HomeComponent() {
 
 
     let navigate = useNavigate();
     const [meetingCode, setMeetingCode] = useState("");
+
+    useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+
+    if (token) {
+        localStorage.setItem("token", token);
+    }
+}, []);
 
 
     const {addToUserHistory} = useContext(AuthContext);
